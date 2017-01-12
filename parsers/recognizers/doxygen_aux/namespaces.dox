@@ -1,0 +1,41 @@
+/**
+ * \namespace libreco
+ * \brief Holds the whole libreco library
+ */
+
+/**
+ * \namespace libreco::adaptors
+ * \brief Common adaptors
+ *	
+ * This namespace holds common adaptors for multistroke and unistroke recognizers.
+ * These are needed for TUIO 2.0 messages preprocessing and also for recognition
+ * result messages creating. 
+ */
+
+/**
+ * \namespace libreco::iotools
+ * \brief Tools for creating templates and SVG gesture representation
+ */
+
+/**
+ * \namespace libreco::rauxiliary
+ * \brief Common functions for all recognizers
+ * 
+ * This namespace holds common functions which are needed in recognizers.
+ */
+
+/**
+ * \namespace libreco::recognizers
+ * \brief Holds touch gesture recognizers
+ *
+ * This namespace holds $1, Protractor and $N recognizer.
+ */
+
+/**
+ * \namespace libreco::rutils
+ * \brief Suport utils for data manipulation
+ * 
+ * This namespace holds all data structures needed for gesture storing,
+ * loading and manipulating with information about gesture.
+ */
+

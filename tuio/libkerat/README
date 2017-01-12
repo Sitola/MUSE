@@ -1,0 +1,11 @@
+libkerat, an experimental (that means non-compliant) tuio 2.0 implementation 
+
+== Documentation ==
+For Doxygen documentation, see
+https://frakira.fi.muni.cz/~luksoft/en/lab/libkerat/
+
+For updates, news and bugreporting, see
+https://sitola.cz/hci/index.php/Libkerat
+
+== Instalation ==
+see INSTALL

@@ -1,0 +1,98 @@
+/**
+\mainpage Libkerat documentation
+
+Libkerat is an experimental (that means not-exactly-compliant) TUIO 2.0 implementation
+
+\xrefitem specification "TUIO 2.0 draft specification" "TUIO 2.0 draft specification"
+The TUIO 2.0 draft specification can be found at <a href="http://www.tuio.org/?tuio20">http://www.tuio.org/?tuio20</a>
+
+\section compatibility TUIO 2.0 Proposals & Compatibility
+
+\subsection lta-ambiguity Linked Tree Association message ambiguity
+There seems to be an error in \ref libkerat::message::linked_tree_association "LTA message"
+design, causing ambiguity of the link-tree reconstruction. As written in
+<a href="http://tuio.org/?tuio20">TUIO 2.0 draft</a>, the LTA message stores
+session id's (uint32), link id's (2*uint16) and node command (int) the same way
+as SKG (Skeleton Volume Geometry) message does. The SKG message OSC type
+string contains the float typetag for coordinates and int values for
+node command. Therefore, each node command is uniquely recognized
+as a part of the data structure and float data as point coordinates.
+However, since all the types in LTA message are integers, there is no unique
+way to distinguish data from node command. The same 21 integer sequence can
+encode a tree with 6 nodes and 4 leafs as well as 8 nodes and 3 leafs.
+
+\subsection normalized-is-wrong The why of normalized is wrong
+Since 3D sensors such as MS Kinect are usually capable of measuring the
+depth of the object, determining of the object's absolute dimensions is easy.
+Since the resolution of the recorded image is known, the transformation of
+received data into normalized coordinate system is easy as well.
+However, normalizing the Z axis requires knowing the range that this
+axis can hold. This makes the protocol usable only in cases where the
+sensor monitors enclosed space, e.g., smaller room. This is problem for
+large halls and possibly outdoors.
+
+Further more, the frame message encodes sensor dimensions
+(or absolute axis ranges if you will) only for 2D space.
+
+\subsection proposed-changes Proposed changes in TUIO 2.0 draft
+
+\li Instead of using the normalized coordinate system, non-normalized
+coordinate system should be used with pixel as distance unit. Most
+sensors are capable of providing their DPI so the pixel to real dimension
+relation is preserved.
+\li As result of previous, the acceleration and velocity would not be
+\li As result of previous, the acceleration and velocity would not be
+normalized.
+\li The angle of rotation should not be normalized to &lt;0; 2.0*PI&gt; since it
+provides neither the count of revolutions nor the direction of deviation
+from the original state.
+\li The LTA message should be redesigned so each node command is preceeded
+by boolean \p true
+\li Redesign the frame message, such that:<ul>
+<li> Instance ID is generated as random upon tracker startup and is mandatory.
+The instance ID is the first attribute of the frame message.
+<br /><tt>/tuio2/frm instance f_id time [app_name]</tt><br />
+<li> Support for IPv6 addressing
+<br /><tt>/tuio2/src {addres_type address}+</tt><br />
+where \p address_type is one of IPv4, MAC or IPv6 integer constant
+\li Separate sensor message, allowing both identifying sensor and it's
+placement in global coordinate system.<br />
+<tt>/tuio2/snr offset_x offset_y [dim_x dim_y [dpi_x dpi_y]]</tt><br />
+<tt>/tuio2/snr offset_x offset_y offset_z [dim_x dim_y dim_z [angle_x angle_y angle_z [dpi_x dpi_y dpi_z]]]</tt>
+</ul>
+\subsection normalized-space Normalized systems
+\subsubsection normalized-coordinates Normalized coordinates
+\li For TUIO 2.0 draft compliance use the normalized &lt;0; 1&gt; range
+\li For TUIO 2.0 draft non-compliance use the pixel coordinates directly
+
+\subsubsection normalized-distance Normalized distance
+\li For TUIO 2.0 draft compliance use the normalized &lt;0; 1&gt; range
+(calculated from proper axis range)
+\li For TUIO 2.0 draft non-compliance use the distance in pixels
+
+\subsubsection normalized-velocity Normalized velocity
+\li For TUIO 2.0 draft compliance use the normalized &lt;0; 1&gt; range,
+where 1 reads as 1 full axis length disposition per second
+\li For TUIO 2.0 draft non-compliance use the pixels per second
+
+\subsubsection normalized-rotation Normalized angle
+\li For TUIO 2.0 draft compliance use the normalized &lt;0; 2*PI&gt; range
+\see libkerat::normalize libkerat::strip_angle_period
+\li For TUIO 2.0 draft non-compliance use the radians directly, preserving
+the deviation direction and magnitude
+
+\subsubsection normalized-rotation-velocity Normalized rotation velocity
+\li For TUIO 2.0 draft compliance use the normalized &lt;0; 1&gt; range,
+where 1 reads as 1 full rotation per second
+\li For TUIO 2.0 draft non-compliance use the radians per second, preserving
+the deviation direction and magnitude
+
+\subsubsection normalized-acceleration Normalized acceleration
+\li For both TUIO 2.0 draft compliance and non-compliance, the acceleration is
+ defined as change of velocity over time
+
+\subsubsection normalized-pressure Normalized pressure
+\li For both TUIO 2.0 draft compliance and non-compliance use the normalized &lt;0; 1&gt; range for
+contact pressure and any negative value to indicate howering
+
+ */

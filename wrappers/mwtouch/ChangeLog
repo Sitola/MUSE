@@ -1,0 +1,6 @@
+2012-04-20 Lukas Rucka xrucka at fi.muni.cz
+ - first "stable" version of mwtouch
+ - working on both multitouch TYPE A and TYPE B devices
+ - both automatic and manual calibration supported
+ - for devices which provide the touch elipse axes
+   a proper bounds message is generated

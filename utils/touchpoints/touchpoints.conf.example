@@ -1,0 +1,21 @@
+#bridgeOn false
+#bridgeIP 147.251.54.90
+#bridgePort 42000
+fsIP 147.251.54.103
+fsPort 20002
+nwID 1
+msgPort 23010
+syncPort 13010
+nodeNum 1
+appID 0
+launcherID 147.251.54.103:19010
+pixelBlockSize 64 64
+blockThreshold 0
+winX 0
+winY 0
+winWidth 1920
+winHeight 1080
+streamType SAGE_BLOCK_NO_SYNC
+nwProtocol UDP
+asyncUpdate true
+

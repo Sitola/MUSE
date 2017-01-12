@@ -1,0 +1,5 @@
+#!/bin/bash
+INSTALLCMD=$( dirname $(readlink -f $0) )/muse_install_component
+MUSE_INSTALL_PREFIX=$( ( [[ -n ${MUSE_INSTALL_PREFIX} ]] && echo ${MUSE_INSTALL_PREFIX} ) || echo ${HOME}/.local )
+env MUSE_INSTALL_PREFIX=${MUSE_INSTALL_PREFIX} $INSTALLCMD
+

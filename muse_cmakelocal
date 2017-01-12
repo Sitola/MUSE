@@ -1,0 +1,3 @@
+#!/bin/bash
+MUSE_INSTALL_PREFIX=$( ( [[ -n ${MUSE_INSTALL_PREFIX} ]] && echo ${MUSE_INSTALL_PREFIX} ) || echo ${HOME}/.local )
+rm -rf build && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX:PATH=${MUSE_INSTALL_PREFIX} .. && make && make install

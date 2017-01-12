@@ -1,0 +1,23 @@
+libkerat, an experimental tuio 2.0 implementation
+
+== TUIO 2.0 Propositions == 
+- support IPv6 addressess in frm message
+  /tuio2/frm f_id time [app inst {addr_sel IPv4|MAC|IPv6 addr +}]
+
+- add sensor message such that
+  /tuio2/snr pos_x pos_y [dim_x dim_y] # classic, 2d sensors
+  /tuio2/snr pos_x pos_y pos_z [angle_x angle_y angle_z [dim_x dim_y dim_z dpy_x dpy_y dpy_z]] # 3d sensors
+   
+  since 3d sensors can have problem identyfing the mapped dimmensions and dpy (eg. kinect) and can be expected to utilize viewport
+
+- unit of acceleration and velocity should not be normalized, rather it should be pixels per (squared) second and
+  unit of angular acceleration and velocity sould be radians per (squared) second
+  a) normalized speed and acceleration does not make sense if the sensor dimmensions are not enforced
+  b) both radians and seconds are SI units, having this in universal unit system can be advantage
+  c) 3d sensors have sensor dimmension crysis, so the normalized speed concept is useless here
+
+== Documentation ==
+see INSTALL
+
+== Instalation ==
+see INSTALL

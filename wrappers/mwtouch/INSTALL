@@ -1,0 +1,24 @@
+== Requires ==
+liblo (and respective development package - e.g. liblo-dev, liblo-devel)
+libconfig++ v. 1.4.5 and greater (or you can comment out the problematic code, but do not be angry for missing error reports)
+libkerat (experimental tuio 2.0 implementation)
+
+== Compilation ==
+run:
+# ./autogen.sh
+# ./configure # standard autotools configure
+# make
+
+If you wish to build the Doxygen documentation, run
+# make doxygen-doc
+
+== Instalation ==
+# make install # standard autotools make install, might require superuser
+
+For the default install DESTDIR value (/usr/local), consider updating your PATH variable
+
+== Toolkit ==
+
+The mwtouch and mwtouch-calibrate are installed into ${DESTDIR}/${BINDIR}/
+
+

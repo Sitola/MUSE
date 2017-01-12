@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<muse_config>
+    <wrapper name="mwtouch">
+        <config>
+            <target>sauron.fi.muni.cz:3333</target>
+            <device>/sys/devices/virtual/input/input[0]/event[0]</device>
+            <sensor uuid="f5adf779-0440-4522-a35a-3f35fea49c5c" coordinate_translation="setup_once" purpose="source">
+                <viewport width="1920" height="1080" />
+                <active_quadrangle>
+                    <bottom_right x="42" y="47" />
+                    <bottom_left x="32407" y="592" />
+                    <top_left x="32735" y="32198" />
+                    <top_right x="-63" y="32788" />
+                </active_quadrangle>
+                <mapping>
+                    <virtual_axis name="x">
+                        <axis>mt_position_x</axis>
+                    </virtual_axis>
+                    <virtual_axis name="y">
+                        <axis>mt_position_y</axis>
+                    </virtual_axis>
+                    <ignore />
+                </mapping>
+                <group uuid="1968e8d0-a78f-410d-9387-8718a96f24f3" />
+            </sensor>
+        </config>
+    </wrapper>
+</muse_config>

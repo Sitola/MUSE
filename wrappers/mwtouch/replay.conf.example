@@ -1,0 +1,20 @@
+# ==== Example config file for mwtouch
+
+# path to device node (viz kiCalibrate)
+path = "/tmp/replay";
+
+# width and height of the sensor in px
+# used for sensor tile rescaling and TUIO frame message
+width = 1920;
+height = 1080;
+
+# implicit mappings
+#X = [ MT_X, X ];
+#Y = [ MT_Y, Y ];
+#Z = [ MT_DISTANCE, Z ];
+
+# ignores for the iiyama ProLite T2250MTS
+ignore = [ "X", "Y", "Z" ];
+
+# target to send information to host:port
+target = "localhost:3333";

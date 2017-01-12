@@ -1,0 +1,38 @@
+/**
+\mainpage Libreco library documentation
+
+\xrefitem specification1 "Dollar One recognizer" "Dollar One recoginzer"
+Dollar One recognizer description can be found at: <a href="http://dx.doi.org/10.1145/1294211.1294238">
+http://dx.doi.org/10.1145/1294211.1294238</a>
+
+\xrefitem specification2 "Protractor recognizer" "Protractor recoginzer"
+Protractor recognizer description can be found at: <a href="http://dx.doi.org/10.1145/1753326.1753654">
+http://dx.doi.org/10.1145/1753326.1753654</a>
+
+\xrefitem specification3 "Dollar N recognizer" "Dollar N recoginzer"
+Dollar N recognizer description can be found at: <a href="http://dl.acm.org/citation.cfm?
+id=1839258&CFID=196092137&CFTOKEN=10672131">http://dl.acm.org/citation.cfm?
+id=1839258&CFID=196092137&CFTOKEN=10672131</a>
+
+\xrefitem specification4 "Libkerat library documentation" "Libkerat library documentation"
+Libkerat library documentation can be found at: <a href="https://frakira.fi.muni.cz/~luksoft/en/lab/libkerat/">https://frakira.fi.muni.cz/~luksoft/en/lab/libkerat/</a>
+
+\section gestures Gestures Recogintion & framework MUSE
+
+This library was created as extension of framework MUSE. Provides functionality for gesture recognition.
+
+\subsection extensions Recognizers extensions
+Recognizers were modified against their default version in the following way. Templates of gestures are loaded
+from XML configuration files. Each template has got following attributes, which are important for gesture preprocessing.
+
+\li Revert attribute ensures that gesture will be loaded also in revert order of points. So it is not needed to specify both directions of unistroke gesture when $1 or Protractro is used.
+\li Sensitivity attribute specifies whether gesture is orientation sensitive or invariant. This means that not the whole algorithm is orientation sensitive or invariant, but decision is made per gesture basis.
+
+\subsection modification Protractor modification
+Protractor was modified against specification. In recognition process, Protractor rotates template once to get the best match with unknown gesture.
+This is not consistent with statement, that Protractor can distinguish as much as eight orientations of one gesture. In recognition process template
+is rotated to fit the gesture with no regard to its sensitivity. To fix this inconsistency, rotation in recognition process was bounded, based on
+number of orientations that should be recognized. With this modification, Protractor is able to recognize requested number of gesture orientations.
+Number of orientations should not be greater then eight, because higher number causes significant lost of precision.
+
+*/

@@ -1,0 +1,17 @@
+<?xml version="1.0">
+<muse_config>
+	<chain>
+		<module path="/dtuio/viewport"><config>
+			<uuid>d5912ebb-7842-4a04-a9c4-511c85b7aeab</uuid>
+			<viewport>
+				<center>	960	540	-400	</center>
+				<width>1920</width>
+				<height>1080</height>
+				<depth>1080</depth>
+				<yaw>0</yaw>
+				<pitch>0</pitch>
+				<roll>-1.570796327</roll>
+			</viewport>
+		</config></module>
+	</chain>
+</muse_config>

@@ -1,0 +1,8 @@
+.libs
+.deps
+*/.libs
+*/.deps
+Makefile*
+*/Makefile*
+./aclocal.m4
+

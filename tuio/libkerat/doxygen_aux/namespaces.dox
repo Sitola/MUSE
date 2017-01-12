@@ -1,0 +1,58 @@
+/**
+ * \defgroup global Global functions
+ * \brief Holds the "extern C" functions and I/O operators
+ */
+
+/**
+ * \namespace libkerat
+ * \brief Holds the whole kerat library
+ */
+
+/**
+ * \namespace libkerat::listeners
+ * \brief Common listeners
+ */
+
+/**
+ * \namespace libkerat::adaptors
+ * \brief Common adaptors
+ */
+
+/**
+ * \namespace libkerat::message
+ * \brief Standard TUIO 2.0 messages
+ */
+
+/**
+ * \namespace libkerat::internals
+ * \brief Do not touch stuff
+ * 
+ * This namespace holds the internal components of the kerat library.
+ * Usualy, the users should not need anything under this namespace.
+ * However, this is made public for TUIO extensions development purposes.
+ */
+
+/**
+ * \namespace libkerat::internals::parsers
+ * \brief Parsers for standard TUIO 2.0 messages
+ *
+ * This parsers are designed for use in simple_client (and possibly compatible
+ * custom client implementations) and can serve as examples for custom parsers
+ * development.
+ */
+
+/**
+ * \namespace libkerat::helpers
+ * \brief Components for standard message classes
+ * 
+ * Helpers are small classes that provide elementar functionality
+ * like session id. This allows for an easy implementation of both standard
+ * TUIO 2.0 messages and custom message types and their utilization in
+ * various algorithms uniformly.
+ */
+
+/**
+ * \namespace libkerat::exception
+ * \brief Exceptions for libkerat-specific errors
+ */
+

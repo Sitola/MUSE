@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<muse_config>
+    <wrapper name="mwtouch">
+        <config>
+            <target>sauron:3333</target>
+            <device>/dev/input/event6</device>
+            <sensor uuid="921c947e-f775-4cd3-a8db-1a85fb5e957a" coordinate_translation="setup_once" purpose="source">
+                <viewport width="1680" height="1050" />
+                <active_quadrangle>
+                    <top_left x="2002" y="1885" />
+                    <bottom_left x="2004" y="100" />
+                    <bottom_right x="78" y="117" />
+                    <top_right x="86" y="1874" />
+                </active_quadrangle>
+                <!-- touchtable group -->
+                <group uuid="a75190e4-8ead-4ded-a552-01d56c98f5a0" />
+                <!-- tykadlo1 -->
+                <neighbour azimuth="-1.570796327" altitude="0" distance="1140" uuid="db9f919c-7590-4fc5-bf8d-4ca5f2b5ea93" />
+                <!-- tykadlo4 -->
+                <neighbour azimuth="0" altitude="0" distance="1770" uuid="754d664d-9da4-43e5-a757-c7d806f3c15c" />
+            </sensor>
+        </config>
+    </wrapper>
+</muse_config>

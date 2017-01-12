@@ -1,0 +1,20 @@
+<?xml version="1.0">
+<muse_config>
+	<chain>
+		<module path="/libkerat/multiplexing_adaptor" />
+		<module path="/muse/sensor/autoconfiguration" />
+		<module path="/dtuio/scaler">
+			<config>
+				<uuid>1968e8d0-a78f-410d-9387-8718a96f24f3</uuid>
+				<width>1920</width>
+				<height>1080</height>
+				<depth>20</depth>
+			</config>
+		</module>
+		<module path="/dtuio/viewport">
+			<config>
+				<uuid>1968e8d0-a78f-410d-9387-8718a96f24f3</uuid>
+			</config>
+		</module>
+	</chain>
+</muse_config>

@@ -1,0 +1,12 @@
+<?xml version="1.0">
+<muse_config>
+	<chain>
+		<module path="/libkerat/multiplexing_adaptor" />
+		<module path="/muse/sensor/autoconfiguration" />
+		<module path="/dtuio/viewport">
+			<config>
+				<uuid>459754e0-c080-419f-a922-343645da9942</uuid>
+			</config>
+                </module>
+	</chain>
+</muse_config>

@@ -1,0 +1,30 @@
+# ==== Example config file for mwtouch
+
+# path to device node (viz mwtouch-calibrate)
+path = "/dev/input/event4";
+
+# width and height of the sensor in px
+# used for sensor tile rescaling and TUIO frame message
+width = 1920;
+height = 1080;
+
+# position of the sensor tile's left top corner (in pixels) on the sensor array
+position = [0, 0];
+
+# sensor coordinates reported for the actual top left and bottom right corners reported by sensor
+# used for axis relabeling and scaling
+top_left = [0, 0];
+bottom_right = [1919, 1079];
+top_right = [1919, 0];
+bottom_left = [0, 1079];
+
+# implicit mappings
+#X = [ MT_X, X ];
+#Y = [ MT_Y, Y ];
+#Z = [ MT_DISTANCE, Z ];
+
+# ignores for the iiyama ProLite T2250MTS
+ignore = [ "X", "Y", "Z" ];
+
+# target to send information to host:port
+target = "localhost:3334";

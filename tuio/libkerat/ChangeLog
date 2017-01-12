@@ -1,0 +1,29 @@
+2013-04-07 - Libkerat 1.0.0
+
+The Libkerat server has undergone severe changes,
+mainly the tuio/osc bundle commision mechanism.
+The original method server::send() has now been
+replaced with 4 smaller functions, 2 of them being
+pure virtuals: (prepare_bundle, run_adaptors,
+output_check, commit). This sequence is now set
+in motion by call to send() method. This change
+was required by the newly added server-side adaptor
+api.
+
+The simple_client was modified to allow passing
+unknown messages as raw OSC messages (see 
+generic_osc_message class and corresponding parsers).
+Container used for parser result processing is now
+vector instead of list.
+
+An interresting example of server adaptor api
+can be seen in append_adaptor (server adaptor
+that modifies the bundle contend by appending
+or preppending the bundle with given messages).
+The forwarding_listener is now built on this
+new api and is way better than it was before.
+
+The default compilation mode is noncompliant,
+see configure for details.
+
+Lukas Rucka <xrucka@fi.muni.cz>; comments wellcomed

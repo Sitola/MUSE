@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<muse_config>
+    <wrapper name="mwkinect">
+        <config>
+            <!--Where to send the data-->
+            <target>localhost:3333</target>
+            <!--Serial number of device this wrapper operates on-->
+            <device>A00363A17288048A</device>
+            <sensor uuid="e9805f63-8d75-43c2-80f8-45c08dbe2597">
+                <viewport width="1920" height="1080" />
+                <blob_area min="400" max="40000" />
+                <depth min="700" max="800" />
+                <group uuid="e9805f63-8d75-43c2-80f8-45c08dbe2597" />
+                <kinect_calibration>
+                    <opencv_storage>
+                        <kinect_T type_id="opencv-matrix">
+                            <rows>3</rows>
+                            <cols>1</cols>
+                            <dt>f</dt>
+                            <data>2.34586525e+00 -1.30240306e-01 7.76565611e-01</data>
+                        </kinect_T>
+                        <kinect_R type_id="opencv-matrix">
+                            <rows>3</rows>
+                            <cols>3</cols>
+                            <dt>f</dt>
+                            <data>9.99935210e-01 -1.13074575e-02 -1.32269843e-03 1.13053890e-02 9.99934852e-01 -1.56153436e-03 1.34026923e-03 1.54647953e-03 9.99997914e-01</data>
+                        </kinect_R>
+                        <Intrinsics_RGB type_id="opencv-matrix">
+                            <rows>3</rows>
+                            <cols>3</cols>
+                            <dt>f</dt>
+                            <data>5.07995087e+02 0. 3.24513367e+02 0. 5.07710968e+02 2.54656281e+02 0. 0. 1.</data>
+                        </Intrinsics_RGB>
+                        <Intrinsics_IR type_id="opencv-matrix">
+                            <rows>3</rows>
+                            <cols>3</cols>
+                            <dt>f</dt>
+                            <data>5.69157776e+02 0. 3.30292084e+02 0. 5.68796936e+02 2.51553925e+02 0. 0. 1.</data>
+                        </Intrinsics_IR>
+                        <Distortion_RGB type_id="opencv-matrix">
+                            <rows>5</rows>
+                            <cols>1</cols>
+                            <dt>f</dt>
+                            <data>1.37683362e-01 -3.13874334e-01 6.00925926e-03 4.15467797e-03 0.</data>
+                        </Distortion_RGB>
+                        <Distortion_IR type_id="opencv-matrix">
+                            <rows>5</rows>
+                            <cols>1</cols>
+                            <dt>f</dt>
+                            <data>-1.05152562e-01 1.56262606e-01 3.92686669e-03 2.54836702e-03 0.</data>
+                        </Distortion_IR>
+                    </opencv_storage>
+                </kinect_calibration>
+            </sensor>
+            <!--Which pseudoui to use - options: auto, gtk, console-->
+            <ui>gtk</ui>
+        </config>
+    </wrapper>
+</muse_config>

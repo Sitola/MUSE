@@ -1,0 +1,24 @@
+#!/bin/bash
+MUSE_INSTALL_PREFIX=$( ( [[ -n ${MUSE_INSTALL_PREFIX} ]] && echo ${MUSE_INSTALL_PREFIX} ) || echo /usr/local )
+
+COMMAND=""
+
+if [[ x$1 = x--force ]] ; then
+    COMMAND="./autogen.sh --prefix=${MUSE_INSTALL_PREFIX}"
+else
+    if [[ -f Makefile ]] ; then
+        echo -n #noop
+    elif [[ -x ./configure ]] ; then 
+        COMMAND="./configure --prefix=${MUSE_INSTALL_PREFIX}"
+    else
+        COMMAND="./autogen.sh --prefix=${MUSE_INSTALL_PREFIX}"
+    fi
+fi
+
+if [ -n "$COMMAND" ] ; then
+    echo $COMMAND
+    ( $COMMAND ) || exit $?
+fi
+
+make -j 4 && make install
+

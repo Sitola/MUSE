@@ -1,0 +1,18 @@
+<?xml version="1.0">
+<muse_config>
+	<chain>
+		<module path="/libkerat/multiplexing_adaptor" />
+		<module path="/libkerat/scaling_adaptor">
+			<config>
+				<x_scale>0.556521739</x_scale>
+				<y_scale>0.493150685</y_scale>
+			</config>
+		</module>
+		<module path="/muse/aggregator/container_bounds">
+			<config>
+				<matching_regex>mwkinect</matching_regex>
+				<container_slot>1234</container_slot>
+			</config>
+		</module>
+	</chain>
+</muse_config>

@@ -1,0 +1,147 @@
+/** \class libkerat::server
+
+Server is used to compile and send the TUIO bundles. Unlike for clients,
+there are no server-side adaptors. Instead of this, there are pre-send callbacks
+(callbacks that are called before the alive message is appended to the OSC bundle,
+enclosing the TUIO bundle). Two methods (see \ref add_presend_callback and
+\ref del_presend_callback) are available to manipulate the callbacks set.
+Read-only access to callback setting is provided through
+\ref callbacks_begin and \ref callbacks_end methods.
+
+All servers are required to implement the \ref send and \ref append_clone methods.
+
+\see libkerat::client libkerat::listener    
+*/
+
+/** \class libkerat::listener
+
+The Listener specifies an interface that all classes that wish to be notified 
+when data is received by class implementing the client interface must implement.
+
+This requires pairing the listener with client using the client's 
+\ref libkerat::client::add_listener "add_listener" and 
+\ref libkerat::client::del_listener "del_listener" methods.
+
+When \ref libkerat::client::add_listener "add_listener" is called upon client
+the \ref notify_client_bind method is called on the listener instance being
+added. Similarly, when the listener is removed using 
+\ref libkerat::client::del_listener "del_listener" method or the client
+the listener instance is connected to is destroyed,
+\ref notify_client_release is called.
+
+All listeners are required to implement the \ref notify method. Single
+listener can be connected to multiple clients.
+
+\see libkerat::client libkerat::adaptor
+
+*/
+
+/** \class libkerat::client
+
+The client is "source" of the TUIO messages on the endpoint side. It provides
+methods for both polling and notification on update.
+
+To utilize the notification mechanism, one must register the
+\ref libkerat::listener "listener" instance using the \ref add_listener method.
+To remove the listener from set of listeners notified, use the \ref del_listener
+method. Respective methods are called on the listener when such event occurs.
+
+All clients are required to implement the \ref load, \ref purge, \ref get_stack
+methods. Single client can have multiple listeners listening. Each listener should be
+notified at most once per call to \ref load, yet this is left for implementation decisions.
+
+\see libkerat::listener libkerat::adaptor libkerat::server
+
+*/
+
+/** \class libkerat::adaptor
+
+The adaptor class extends \ref listener and \ref client classes and adds the
+\ref process_bundle method. This allows to connect the adaptor between the
+application listener and receiving client, allowing interception of received
+data and preprocessing.
+
+Adaptors can be used either for processing whole bundle stacks by utilizing
+the listener interface or for processing individual bundles by calls to 
+\ref process_bundle method.
+
+All adaptors are required to implement the \ref process_bundle method plus all
+methods inherited from \ref listener and \ref client except for the
+\ref load methods.
+
+Two basic adaptors adding the multiplexing and scaling capabilities are provided
+by the library.
+
+\see libkerat::client libkerat::listener
+libkerat::adaptors::multiplexing_adaptor libkerat::adaptors::scaling_adaptor
+
+ */
+
+/** \class libkerat::kerat_message
+
+This class represents the common standard TUIO 2.0 and non-standard messages.
+\note Avoid diamond inheriance from the kerat_message class at all costs! If you
+really need to inherit from two messages, than you should create a corresponding
+\ref libkerat::helpers "helper class" instead
+
+\see libkerat::helpers libkerat::message::token
+
+ */
+
+/** \class libkerat::simple_client
+
+This class represents the TUIO client that reads the raw TUIO bundles and translates them to objects.
+This does not provide any aggregation, all the data this class provides are the raw data from network.
+
+\see libkerat::adaptors::multiplexing_adaptor
+
+\typedef libkerat::simple_client::message_convertor
+Used to process (un)recognized messages and serves as message 
+convertor. The conversion function is expected to convert the
+osc message to respective descenden of \brief kerat_message and add it
+to the results list.
+
+ */
+
+/** \class libkerat::simple_server
+
+This class represents the TUIO server that sends the raw TUIO bundles.
+Possible errors during bundle imprinting are written to stderr.
+
+\see libkerat::client
+
+ */
+
+/** \class libkerat::adaptors::multiplexing_adaptor
+
+This adaptor provides the multiplexing capability by remapping session id's that
+occur in all standard TUIO messages to new, non-conflicting, values. To support
+the multiplexing in custom messages, inherit from this class and use provided
+protected methods.
+
+\see libkerat::adaptor libkerat::client libkerat::message::frame
+
+ */
+
+/** \class libkerat::adaptors::scaling_adaptor
+
+This adaptor can be used with fixed scaling factors or automatic to fit
+given dimensions.
+\li Automatic: determine scaling factors based on the given dimmensions and
+sensor dimmension information received. If no sensor dimmensions are received,
+then no action is performed.
+\li Fixed: Each coordinate, velocity and (if enabled) acceleration information
+in standard TUIO 2.0 messages is scalled with fixed factor.
+
+\see libkerat::adaptor
+
+ */
+
+/** \class libkerat::listeners::forwarding_listener
+
+Simply forwards all received TUIO messages.
+\brief Sets the frame and alive messages as well.
+
+\see libkerat::adaptor libkerat::client libkerat::message::frame
+
+ */

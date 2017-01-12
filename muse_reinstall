@@ -1,0 +1,20 @@
+#!/bin/bash
+RETVAL=0
+INSTALLCMD=$( dirname $( readlink -f $0 ) )/muse_localinstall
+
+for i in tuio/libkerat tuio/dtuio parsers/recognizers libmuse \
+    $(for candidate in wrappers/* utils/* ; do \
+        [[ -d $candidate ]] && [[ -x $candidate/configure ]] && echo $candidate ; \
+    done ) \
+; do
+    [[ -d $i ]] && ( \
+         echo ================ $i ================ ; \
+         pushd $i > /dev/null ; \
+         $INSTALLCMD ; \
+         RETVAL=$? ; \
+         [[ $RETVAL ]] && (popd > /dev/null) \
+    )
+    
+    [[ $RETVAL ]] || exit $RETVAL
+done
+

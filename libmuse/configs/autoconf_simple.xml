@@ -1,0 +1,7 @@
+<?xml version="1.0">
+<muse_config>
+	<chain>
+		<module path="/libkerat/multiplexing_adaptor" />
+		<module path="/muse/sensor/autoconfiguration" />
+	</chain>
+</muse_config>

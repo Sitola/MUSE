@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<muse_config>
+    <wrapper name="mwtouch">
+        <config>
+            <!--Where to send the data-->
+            <target>localhost:3333</target>
+            <!--Which device this wrapper operates on-->
+            <device>/dev/input/event4</device>
+            <!--
+The very sensor & wrapper configuration; 
+coordinate_translation: one of "setup_once", "setup_continuous" and "intact";
+purpose: one of "source", "observer" and "tagger"
+-->
+            <sensor uuid="db9f919c-7590-4fc5-bf8d-4ca5f2b5ea93" coordinate_translation="setup_once" purpose="source">
+                <!--The virtual rectangle of this virtual sensor-->
+                <viewport width="1366" height="768" />
+                <!--The result of mapping-->
+                <active_quadrangle>
+                    <top_left x="1472" y="938" />
+                    <top_right x="5654" y="938" />
+                    <bottom_right x="5654" y="4218" />
+                    <bottom_left x="1472" y="4218" />
+                </active_quadrangle>
+                <!--If specified, the given axes will override the default mapping-->
+                <mapping>
+                    <virtual_axis name="x">
+                        <axis>mt_position_x</axis>
+                    </virtual_axis>
+                    <virtual_axis name="y">
+                        <axis>mt_position_y</axis>
+                    </virtual_axis>
+                    <!--Following input axes shall be completly ignored-->
+                    <ignore />
+                </mapping>
+                <!--An example of group membership tag-->
+                <!--<group uuid="db9f919c-7590-4fc5-bf8d-4ca5f2b5ea93" />-->
+                <!--An example of neighbour report-->
+                <!--<neighbour azimuth="-1.570796327" altitude="0" distance="1080" uuid="db9f919c-7590-4fc5-bf8d-4ca5f2b5ea93" />-->
+            </sensor>
+        </config>
+    </wrapper>
+</muse_config>

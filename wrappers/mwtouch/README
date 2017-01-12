@@ -1,0 +1,15 @@
+mwtouch - the linux kernel input layer to TUIO 2.0 wrapper and toolkit
+
+== Contains ==
+ - mwtouch-calibrate - calibration software
+   invoke: mwtouch-calibrate
+
+ - mwtouch - the very wrapper
+   invoke: mwtouch device_config_file
+
+== Install ==
+see INSTALL
+
+== Documentation ==
+see INSTALL
+

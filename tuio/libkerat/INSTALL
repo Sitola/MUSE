@@ -1,0 +1,25 @@
+== Requires ==
+liblo (and respective development package - e.g. liblo-dev, liblo-devel)
+
+== Compilation ==
+run:
+# ./autogen.sh
+# ./configure # standard autotools configure
+# make
+
+If you wish to build the Doxygen documentation, run
+# make doxygen-doc
+
+If you wish to compile the library with non-compliant features
+(see https://sitola.cz/hci/index.php/Libkerat for details)
+run configure as:
+# ./configure --enable-noncompliant
+
+== Instalation ==
+# make install # standard autotools make install, might require superuser
+
+For the default install DESTDIR value (/usr/local), consider updating your
+PKG_CONFIG_PATH and LD_LIBRARY_PATH variables
+
+== Tools ==
+All tools distributed with library are stored in ${DESTDIR}/${LIBEXECDIR}/libkerat

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<muse_config>
+    <wrapper name="mwtouch">
+        <!--Where to send the data-->
+        <target>gonzales:3333</target>
+        <!--Which device this wrapper operates on-->
+        <device>/dev/input/event2</device>
+        <!--The very sensor & wrapper configuration-->
+        <sensor uuid="c8ca0508-4daa-0408-c443-f64d70edf64c" coordinate_translation="setup_once" purpose="source">
+            <!--The virtual rectangle of this virtual sensor-->
+            <viewport width="1920" height="1200" />
+            <!--The result of mapping-->
+            <active_quadrangle>
+                <top_left x="0" y="0" />
+                <top_right x="1919" y="0" />
+                <bottom_right x="1919" y="1079" />
+                <bottom_left x="0" y="1079" />
+            </active_quadrangle>
+            <!--If specified, the given axes will override the default mapping-->
+            <mapping>
+                <virtual_axis name="x">
+                    <axis>x</axis>
+                    <axis>mt_position_x</axis>
+                </virtual_axis>
+                <virtual_axis name="y">
+                    <axis>y</axis>
+                    <axis>mt_position_y</axis>
+                </virtual_axis>
+                <!--Following input axes shall be completly ignored-->
+                <ignore />
+            </mapping>
+            <!--An example of group membership tag-->
+            <group uuid="c8ca0508-4daa-0408-c443-f64d70edf64c" />
+            <!--An example of neighbour report-->
+            <neighbour azimuth="-1.570796327" altitude="0" distance="1080" uuid="c8ca0508-4daa-0408-c443-f64d70edf64c" />
+        </sensor>
+    </wrapper>
+</muse_config>

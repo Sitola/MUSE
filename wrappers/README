@@ -1,0 +1,6 @@
+Here are wrappers for several devices we use:
+All the wrappers takes data from particular devices and produces TUIO 2.0 messages.
+
+- mwtouch -- touch-based devices (Single-/Multi-touch panels, Touchpads, Apple Trackpad)
+- mwkinect -- MS Kinect
+(- mwcam -- various Web cameras !!!TBD!!!)
